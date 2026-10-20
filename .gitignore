@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+*.parquet
+*.jsonl
+*.safetensors
+*.pt
+*.pth
+*.log
+.DS_Store
+.venv*/
+outputs/
+models/
+data/
+results/

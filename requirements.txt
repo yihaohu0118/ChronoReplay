@@ -1,0 +1,11 @@
+# CPU data preparation and scoring. Python 3.11 is the release target.
+numpy==1.26.4
+pandas==2.2.3
+pyarrow==18.1.0
+Pillow==11.3.0
+opencv-python-headless==4.11.0.86
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+packaging==25.0
+pytest==8.4.2
+tqdm==4.67.1

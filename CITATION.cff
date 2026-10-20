@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "Please cite ChronoReplay when using this implementation."
+title: "ChronoReplay: One Answer Interface Is Not Enough for Streaming Spatial Intelligence"
+type: software
+authors:
+  - family-names: Hu
+    given-names: Yihao
+  - family-names: Lin
+    given-names: Yitong
+  - family-names: Wang
+    given-names: Pan
+  - family-names: Wen
+    given-names: Zhihao
+  - family-names: Wang
+    given-names: Hang
+  - family-names: Zhao
+    given-names: Yiwen
+  - family-names: Liu
+    given-names: Deyuan
+  - family-names: Li
+    given-names: Yutong
+  - family-names: WAN
+    given-names: Mingda
+  - family-names: Mao
+    given-names: Yuchen
+  - family-names: Lin
+    given-names: Tao
+repository-code: "https://github.com/yihaohu0118/ChronoReplay"
+url: "https://yihaohu0118.github.io/ChronoReplay/"

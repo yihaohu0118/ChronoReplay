@@ -1,0 +1,2 @@
+-r requirements-model.txt
+deepspeed==0.19.2

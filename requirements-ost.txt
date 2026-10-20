@@ -1,0 +1,2 @@
+-r requirements-model.txt
+vllm==0.11.0

@@ -1,0 +1,20 @@
+{
+  "format": "chronoreplay.code_package_audit.v2",
+  "date": "2026-10-20",
+  "experiment_results_included": false,
+  "model_weights_included": false,
+  "raw_media_included": false,
+  "git_history_included": false,
+  "frozen_training_selection_rows": 39561,
+  "source_training_pool_sha256": "887c25e576bc131cf4655394d9d64f1dc039447e628941c7ad6262840f869e44",
+  "code_and_manifest_sensitive_pattern_matches": 0,
+  "official_ost_metric_code_redistributed": false,
+  "ost_adapter_conformance_checks_passed": 252,
+  "linux_python311_dependency_resolution": "passed; pip dry-run; FlashAttention installed separately",
+  "project_model_stack_imports": "passed",
+  "gpu_training_or_full_benchmark_rerun": false,
+  "project_license": "pending author selection",
+  "cpu_test_status": "passed from isolated archive extraction",
+  "included_cpu_tests_passed": 57,
+  "cpu_test_python": "3.13.7"
+}
