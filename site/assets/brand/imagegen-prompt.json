@@ -1,0 +1,6 @@
+{
+  "tool": "Built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Asset type: transparent hero object for an original research-project animated poster, ChronoReplay. Create one beautiful sculptural TIME REPLAY INSTRUMENT: a large concentric copper-orange orbital ring with an open clockwise arc, a polished pale ceramic inner chassis and a deep smoked glass center; three small translucent rectangular film-frame panes travel along the outer orbit, representing a chronological observation history. It should feel like a tangible premium scientific instrument, playful yet precise, not a robot. Camera is a three-quarter frontal view, object floats, fills most of a square canvas with generous safe edges. Cohesive materials: satin copper #bb4b2c, glowing amber thin edges, warm porcelain, frosted glass, charcoal. Soft studio illumination and fine physically plausible reflections. Clean silhouette that reads at 250px. Sparse, meticulously art-directed geometry. TRUE transparent background, no ground plane, no backdrop, no text, no letters, no numbers, no graphs, no decorative particles, no watermark. This is an illustrative project identity, not a claimed physical device.",
+  "output": "sculpture.png"
+}

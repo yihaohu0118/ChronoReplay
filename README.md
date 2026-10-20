@@ -1,5 +1,7 @@
 <div align="center">
 
+<a href="https://yihaohu0118.github.io/ChronoReplay/"><img src="site/assets/brand/cover.gif" alt="ChronoReplay: observe chronological histories, replay native targets at causal boundaries, and balance categorical, metric and temporal supervision." width="100%"></a>
+
 # ChronoReplay
 ### One Answer Interface Is Not Enough for Streaming Spatial Intelligence
 
@@ -12,6 +14,9 @@ Yihao Hu*, Yitong Lin*, Pan Wang*, Zhihao Wen†, Hang Wang, Yiwen Zhao, Deyuan 
 [Overview](#overview) · [Quick start](#quick-start) · [Data](docs/data.md) · [Training](docs/training.md) · [Evaluation](docs/evaluation.md) · [Citation](#citation)
 
 </div>
+
+<p align="center"><sub>Conceptual method animation · <a href="site/assets/brand/cover.png">Static poster</a> · <a href="https://yihaohu0118.github.io/ChronoReplay/assets/brand/cover.mp4">12-second video</a> · <a href="https://yihaohu0118.github.io/ChronoReplay/#demo">Interactive paper case</a></sub></p>
+
 
 <p align="center"><img src="site/assets/teaser.png" alt="ChronoReplay combines complementary spatial supervision through causal replay." width="100%"></p>
 
