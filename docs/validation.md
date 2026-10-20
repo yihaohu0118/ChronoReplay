@@ -2,6 +2,19 @@
 
 This document records software checks, not benchmark results.
 
+## Homepage publication checks (2026-10-20)
+
+- Twenty-six targeted public-entry-point and data-pipeline tests passed locally
+  on Python 3.11.5. The full CPU suite is also configured in GitHub Actions.
+- The homepage was checked in an isolated browser at 1440-pixel desktop and
+  390-pixel mobile widths, with no horizontal overflow or JavaScript errors.
+- Result switching, figure enlargement, BibTeX copying, local links, and the
+  JavaScript-disabled results table passed browser checks.
+- The displayed main scores were checked against the manuscript's numeric macros.
+- The linked manuscript was recompiled as a 38-page PDF. The first page and
+  reproducibility statement contain verified Code and Project Homepage links.
+- Publication files were scanned for credential patterns before uploading.
+
 ## Completed in the packaging review
 
 - Original archive contents were inspected and compared with the unpacked sources.
