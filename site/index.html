@@ -1,138 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ChronoReplay trains one vision-language model for categorical, metric, and temporal spatial reasoning through causal replay and family-balanced learning.">
-  <meta name="theme-color" content="#f8fafc">
-  <meta property="og:title" content="ChronoReplay — Streaming Spatial Intelligence">
-  <meta property="og:description" content="One Answer Interface Is Not Enough for Streaming Spatial Intelligence. Paper, code, method, and results.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yihaohu0118.github.io/ChronoReplay/">
-  <meta property="og:image" content="https://yihaohu0118.github.io/ChronoReplay/assets/teaser.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://yihaohu0118.github.io/ChronoReplay/">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="style.css">
-  <title>ChronoReplay | Streaming Spatial Intelligence</title>
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="wordmark" href="#top"><span class="brand-icon" aria-hidden="true">↺</span>ChronoReplay</a>
-      <div class="nav-links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#resources">Resources</a></div>
-      <a class="nav-paper" href="assets/ChronoReplay.pdf">Read the paper <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
-  <main id="main">
-    <section id="top" class="hero wrap">
-      <p class="eyebrow"><span></span> Streaming spatial intelligence · 2026</p>
-      <h1>ChronoReplay</h1>
-      <p class="paper-title">One Answer Interface Is Not Enough<br class="desktop-break"> for Streaming Spatial Intelligence</p>
-      <p class="authors">
-        <span>Yihao Hu<sup>1,*</sup></span><span>Yitong Lin<sup>2,*</sup></span><span>Pan Wang<sup>3,*</sup></span><span>Zhihao Wen<sup>4,†</sup></span><span>Hang Wang<sup>1</sup></span><span>Yiwen Zhao<sup>5</sup></span><span>Deyuan Liu<sup>1</sup></span><span>Yutong Li<sup>6</sup></span><span>Mingda WAN<sup>1</sup></span><span>Yuchen Mao<sup>7</sup></span><span>Tao Lin<sup>1,†</sup></span>
-      </p>
-      <p class="affiliations"><span><sup>1</sup>Westlake University</span><span><sup>2</sup>ZJU</span><span><sup>3</sup>USTC</span><span><sup>4</sup>SMU</span><span><sup>5</sup>FDU</span><span><sup>6</sup>ECNU</span><span><sup>7</sup>SJTU</span></p>
-      <p class="author-notes">* Equal contribution <span>† Corresponding authors</span></p>
-      <div class="hero-actions">
-        <a class="button primary" href="assets/ChronoReplay.pdf"><span aria-hidden="true">↗</span> Paper</a>
-        <a class="button" href="https://github.com/yihaohu0118/ChronoReplay"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.54 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.55.23 2.7.11 2.98.73.79 1.16 1.79 1.16 3.02 0 4.3-2.63 5.25-5.14 5.53.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg> Code</a>
-        <a class="button" href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/data.md">Data guide <span aria-hidden="true">↗</span></a>
-        <a class="button subtle" href="#citation">Cite this work <span aria-hidden="true">↓</span></a>
-      </div>
-      <p class="hero-summary">One observation history. Categorical, metric, and temporal answers.<br>Learn complementary spatial abilities through chronological replay.</p>
-      <figure class="hero-figure">
-        <a href="assets/teaser.png" data-zoom><img src="assets/teaser.png" width="1800" height="597" alt="ChronoReplay brings categorical, metric, temporal, and reference-frame supervision together, addressing the uneven transfer of specialized training." fetchpriority="high"></a>
-        <figcaption>From specialized readouts to complementary spatial abilities. <span>Figure 1 from the paper · Click to enlarge</span></figcaption>
-      </figure>
-      <div class="metrics" aria-label="Research highlights">
-        <div><strong>+13.41<span> pts</span></strong><p>OST-Bench over the official base</p></div>
-        <div><strong>3<span> benchmarks</span></strong><p>Improved under matched observation access</p></div>
-        <div><strong>39,561</strong><p>Sequences in the causal replay pool</p></div>
-      </div>
-    </section>
-
-    <section id="overview" class="section overview wrap">
-      <div class="section-label">01 / The idea</div>
-      <div class="prose">
-        <h2>Different answers need<br>different spatial distinctions.</h2>
-        <p class="lead">Knowing which side an object lies on does not necessarily preserve how far away it is, or when it first appeared.</p>
-        <p>Training on one answer interface can concentrate improvements on that interface while transfer to others remains weak. We call this observed specialization <em>interface lock-in</em>. ChronoReplay combines heterogeneous supervision in chronological episodes, keeps source-native targets, and balances their contribution to learning.</p>
-        <p>A single Qwen3-VL-8B checkpoint improves across OVO-S-Bench, OST-Bench, and UCS-Bench under the same observation access. Adaptive frame selection provides a separate inference-time gain with the trained model held fixed.</p>
-        <details class="abstract"><summary>Read the full abstract <span aria-hidden="true">+</span></summary><div id="abstract-text">Training a spatial VLM to answer which side an object lies on does not require it to preserve the metric displacement that determines that answer, while supervision for a distance estimate may leave categorical relations largely unconstrained. When post-training emphasizes one readout, improvements can therefore concentrate on that interface while transfer to others remains weak or even degrades; we call this observed specialization interface lock-in. ChronoReplay addresses it by replaying heterogeneous spatial supervision as chronologically ordered episodes, retaining source-native targets, and balancing supervision across families. Under the same observation access, a single ChronoReplay checkpoint improves OVO-S-Bench, OST-Bench, and UCS-Bench together, including a 13.41-point gain on OST-Bench, and achieves the highest three-benchmark mean among the supervision settings compared here. Same-data controls further separate the ingredients of this transfer: answer serialization redistributes gains across OST and UCS, family-balanced learning improves over ordinary joint SFT and natural turn weighting, and chronological replay exceeds a shifted-order control by about 2.41 OST points across two paired seeds. Adaptive frame selection then changes evidence access while keeping the trained model fixed, providing an additional inference-time gain at lower visual cost. Streaming spatial performance depends on what distinctions supervision preserves, how heterogeneous histories are organized during learning, and what causal evidence inference makes available at test time.<p><strong>Code:</strong> <a href="https://github.com/yihaohu0118/ChronoReplay">github.com/yihaohu0118/ChronoReplay</a><br><strong>Project Homepage:</strong> <a href="https://yihaohu0118.github.io/ChronoReplay/">yihaohu0118.github.io/ChronoReplay/</a></p></div></details>
-      </div>
-    </section>
-
-    <section id="method" class="section method-section">
-      <div class="wrap">
-        <div class="section-label">02 / The method</div>
-        <div class="section-heading"><h2>Preserve the target.<br>Respect its history.</h2><p>Two stages turn complementary spatial supervision into one autoregressive training objective.</p></div>
-        <figure class="figure-panel"><a href="assets/method.png" data-zoom><img src="assets/method.png" width="2100" height="1147" loading="lazy" alt="Stage I constructs chronological trajectory episodes and single-turn preservation examples. Stage II combines normalized family risks in one family-balanced learning objective."></a><figcaption>Causal replay construction and family-balanced learning. Observations beyond the query's causal frontier remain out of scope.</figcaption></figure>
-        <div class="method-steps">
-          <article><span class="step-number">I</span><h3>Causal replay construction</h3><p>Retain categorical options, metric values, and temporal targets in their source-native formats. Replay trajectory turns in chronological order, with each target tied to its observation boundary.</p><div class="small-tags"><span>Native targets</span><span>Chronological episodes</span></div></article>
-          <article><span class="step-number">II</span><h3>Family-balanced learning</h3><p>Normalize the preservation and trajectory losses, then balance their contribution to shared parameters. The language model and visual merger are trained; the visual encoder stays frozen.</p><div class="small-tags"><span>Preservation + trajectory</span><span>One shared model</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="results" class="section wrap">
-      <div class="section-label">03 / Evidence</div>
-      <div class="section-heading"><h2>One checkpoint.<br>Transfer across interfaces.</h2><p>Matched comparisons isolate the effects of training. Adaptive observation access is measured separately.</p></div>
-      <div class="result-tabs" role="group" aria-label="Choose a result comparison">
-        <button type="button" class="active" data-result="matched" aria-pressed="true">Cross-interface transfer</button>
-        <button type="button" data-result="controls" aria-pressed="false">Supervision controls</button>
-        <button type="button" data-result="access" aria-pressed="false">Observation access</button>
-      </div>
-      <div class="results-panel" aria-live="polite" aria-atomic="true">
-        <h3 id="results-title">Same model size. Same observation access.</h3>
-        <p id="results-note">Official Qwen3-VL-8B versus ChronoReplay. OVO-S uses Uniform-128; OST and UCS follow their fixed causal evaluation protocols. Higher is better.</p>
-        <div id="result-chart" class="chart" aria-hidden="true"></div>
-        <div class="table-scroll" tabindex="0" aria-label="Benchmark result table">
-          <table id="results-table">
-            <caption>Matched causal-access evaluation, scores in percent.</caption>
-            <thead><tr><th scope="col">Model</th><th scope="col">OVO-S ↑</th><th scope="col">OST ↑</th><th scope="col">UCS ↑</th></tr></thead>
-            <tbody><tr><th scope="row">Official Qwen3-VL-8B</th><td>48.98</td><td>50.52</td><td>45.33</td></tr><tr class="highlight"><th scope="row">ChronoReplay</th><td>53.89</td><td>63.93</td><td>52.77</td></tr></tbody>
-          </table>
-        </div>
-        <p class="source-note">Author-reported results from the paper; this release does not bundle saved predictions. <a href="assets/ChronoReplay.pdf">See protocols and full tables ↗</a></p>
-      </div>
-      <div class="findings">
-        <article><p class="finding-number">+2.41 <small>OST points</small></p><h3>Chronological order matters.</h3><p>Chronological replay exceeds shifted-order replay across two paired seeds (64.22 versus 61.81 mean OST score), with the same turn content.</p></article>
-        <article><p class="finding-number">37.11% <small>fewer frames</small></p><h3>Evidence access adds another gain.</h3><p>Adaptive access uses 80.50 frames on average versus Uniform-128 and improves OVO-S from 53.89 to 57.98 for the same checkpoint.</p></article>
-      </div>
-    </section>
-
-    <section class="section examples-section">
-      <div class="wrap example-grid">
-        <div><div class="section-label">04 / A closer look</div><h2>One origin.<br>Two native readouts.</h2><p>Spatial answers depend on the history that defines them. This OST-Bench episode pairs metric and temporal questions with the same causal observation sequence.</p><p class="muted">Qualitative example reproduced from the paper. Full examples and limitations are included in the manuscript.</p><a class="text-link" href="assets/ChronoReplay.pdf">Explore the paper <span aria-hidden="true">↗</span></a></div>
-        <figure><a href="assets/case.png" data-zoom><img src="assets/case.png" width="1109" height="1600" loading="lazy" alt="Qualitative OST-Bench episode from the paper showing metric and temporal readouts grounded in a shared observation history."></a><figcaption>Paper example · Click to inspect at full resolution</figcaption></figure>
-      </div>
-    </section>
-
-    <section id="resources" class="section wrap">
-      <div class="section-label">05 / Build on the work</div>
-      <div class="section-heading"><h2>Start with the code.</h2><p>Implementation, configurations, tests, and a frozen training-selection manifest are available in the repository.</p></div>
-      <div class="resource-grid">
-        <a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/installation.md"><span class="resource-index">01</span><h3>Installation <span>↗</span></h3><p>Environment setup and model requirements.</p></a>
-        <a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/data.md"><span class="resource-index">02</span><h3>Data preparation <span>↗</span></h3><p>Native records, selection manifests, and source access.</p></a>
-        <a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/training.md"><span class="resource-index">03</span><h3>Training <span>↗</span></h3><p>The replay recipe and controlled comparisons.</p></a>
-        <a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/evaluation.md"><span class="resource-index">04</span><h3>Evaluation <span>↗</span></h3><p>Inference and scoring for all three benchmarks.</p></a>
-      </div>
-      <div class="quickstart">
-        <div><h3>A small example, without a model download.</h3><p>The CPU smoke test generates synthetic images and native records, checks media decoding, and builds a weighted Parquet pool.</p><p class="muted">Fine-tuned weights, benchmark media, and saved predictions are not included. See the data guide for available manifests and source-specific requirements.</p></div>
-        <div class="code-panel"><div class="code-label">Terminal <button type="button" class="copy-button" data-copy="quickstart-code">Copy</button></div><pre><code id="quickstart-code">git clone https://github.com/yihaohu0118/ChronoReplay.git
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="ChronoReplay trains one vision-language model for categorical, metric, and temporal spatial reasoning through causal replay and family-balanced learning." name="description"/>
+<meta content="#f8f7f4" name="theme-color"/>
+<meta content="ChronoReplay — Streaming Spatial Intelligence" property="og:title"/>
+<meta content="One Answer Interface Is Not Enough for Streaming Spatial Intelligence. Paper, code, method, and results." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yihaohu0118.github.io/ChronoReplay/" property="og:url"/>
+<meta content="https://yihaohu0118.github.io/ChronoReplay/assets/teaser.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://yihaohu0118.github.io/ChronoReplay/" rel="canonical"/>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="style.css" rel="stylesheet"/>
+<title>ChronoReplay | Streaming Spatial Intelligence</title>
+<script defer="" src="app.js"></script>
+<link as="font" crossorigin="" href="assets/fonts/manrope.woff2" rel="preload" type="font/woff2"/><link as="font" crossorigin="" href="assets/fonts/space-grotesk.woff2" rel="preload" type="font/woff2"/><script defer="" src="experience.js"></script><noscript><style>.demo-controls,.result-tabs{display:none}</style></noscript></head>
+<body data-project="chrono">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<nav aria-label="Main navigation" class="nav wrap">
+<a class="wordmark" href="#top"><span aria-hidden="true" class="brand-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 40 40"><path d="M32 15A13 13 0 1 0 32 26" stroke="currentColor" stroke-linecap="round" stroke-width="3.2"></path><path d="M25 15h8V7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"></path><path d="M20 11v10l7 4" stroke="currentColor" stroke-linecap="round" stroke-width="2.4"></path><circle cx="20" cy="21" fill="currentColor" r="2"></circle></svg></span>ChronoReplay</a>
+<div class="nav-links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#resources">Resources</a></div>
+<a class="nav-paper" href="assets/ChronoReplay.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+<a class="sibling-link" href="https://yihaohu0118.github.io/ViSS/">ViSS ↗</a></nav>
+<div aria-hidden="true" class="reading-progress"></div></header>
+<main id="main">
+<section class="hero wrap" id="top"><div class="hero-layout"><div class="hero-copy"><p class="eyebrow"><span></span> Streaming spatial intelligence · 2026</p><h1>Chrono<span>Replay</span></h1><p class="paper-title">One Answer Interface Is Not Enough<br class="desktop-break"/> for Streaming Spatial Intelligence</p><p class="hero-deck">One history. Multiple spatial abilities.<br/>Learn what happened, where it happened, and when.</p><div class="hero-actions">
+<a class="button primary" href="assets/ChronoReplay.pdf"><span aria-hidden="true">↗</span> Paper</a>
+<a class="button" href="https://github.com/yihaohu0118/ChronoReplay"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.54 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.55.23 2.7.11 2.98.73.79 1.16 1.79 1.16 3.02 0 4.3-2.63 5.25-5.14 5.53.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z" fill="currentColor"></path></svg> Code</a>
+<a class="button" href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/data.md">Data guide <span aria-hidden="true">↗</span></a>
+<a class="button subtle" href="#citation">Cite this work <span aria-hidden="true">↓</span></a>
+</div></div>
+<div class="demo-shell">
+<div aria-label="Interactive paper example" class="demo-board">
+<div class="demo-topline"><span class="demo-kicker">A history worth replaying</span><span class="demo-badge">5 observation rounds</span></div>
+<div aria-label="Explore the paper example" class="demo-controls" role="group"><button aria-pressed="true" data-mode="temporal" type="button">Temporal</button><button aria-pressed="false" data-mode="reference" type="button">Reference frame</button><button aria-pressed="false" class="play-trace" type="button">▶ Play trace</button></div>
+<div class="demo-image-wrap"><img alt="Observation frame from the paper's qualitative example." class="demo-image" fetchpriority="high" height="360" src="assets/replay/frame-3.jpg" width="600"/><span class="frame-label">Round 2</span><span class="frame-corner">Shared observation history</span></div>
+<div aria-label="Choose an observation frame" class="filmstrip" role="group"></div>
+<div class="demo-question"><small>Question from the paper</small><span class="question-text">When were both the bathtub and folded towel on the observer’s left?</span></div>
+<div aria-live="polite" class="demo-answer"><strong class="answer-value">Round 2</strong><span class="answer-caption">Temporal answer · asked in Round 4</span></div>
+</div>
+<p class="demo-footnote">Explore an illustrated case from the paper. Answers are the reported outputs. <a href="assets/ChronoReplay.pdf">Read the case ↗</a></p>
+</div></div><div aria-label="Authors and affiliations" class="author-panel"><p class="authors">
+<span>Yihao Hu<sup>1,*</sup></span><span>Yitong Lin<sup>2,*</sup></span><span>Pan Wang<sup>3,*</sup></span><span>Zhihao Wen<sup>4,†</sup></span><span>Hang Wang<sup>1</sup></span><span>Yiwen Zhao<sup>5</sup></span><span>Deyuan Liu<sup>1</sup></span><span>Yutong Li<sup>6</sup></span><span>Mingda WAN<sup>1</sup></span><span>Yuchen Mao<sup>7</sup></span><span>Tao Lin<sup>1,†</sup></span>
+</p><p class="affiliations"><span><sup>1</sup>Westlake University</span><span><sup>2</sup>ZJU</span><span><sup>3</sup>USTC</span><span><sup>4</sup>SMU</span><span><sup>5</sup>FDU</span><span><sup>6</sup>ECNU</span><span><sup>7</sup>SJTU</span></p><p class="author-notes">* Equal contribution <span>† Corresponding authors</span></p></div><div aria-label="Research highlights" class="metrics">
+<div><strong>+13.41<span> pts</span></strong><p>OST-Bench over the official base</p></div>
+<div><strong>3<span> benchmarks</span></strong><p>Improved under matched observation access</p></div>
+<div><strong>39,561</strong><p>Sequences in the causal replay pool</p></div>
+</div></section>
+<section class="section overview wrap" id="overview">
+<div class="section-label">01 / The idea</div>
+<div class="prose">
+<h2>Different answers need<br/>different spatial distinctions.</h2>
+<p class="lead">Knowing which side an object lies on does not necessarily preserve how far away it is, or when it first appeared.</p>
+<p>Training on one answer interface can concentrate improvements on that interface while transfer to others remains weak. We call this observed specialization <em>interface lock-in</em>. ChronoReplay combines heterogeneous supervision in chronological episodes, keeps source-native targets, and balances their contribution to learning.</p>
+<p>A single Qwen3-VL-8B checkpoint improves across OVO-S-Bench, OST-Bench, and UCS-Bench under the same observation access. Adaptive frame selection provides a separate inference-time gain with the trained model held fixed.</p>
+<details class="abstract"><summary>Read the full abstract <span aria-hidden="true">+</span></summary><div id="abstract-text">Training a spatial VLM to answer which side an object lies on does not require it to preserve the metric displacement that determines that answer, while supervision for a distance estimate may leave categorical relations largely unconstrained. When post-training emphasizes one readout, improvements can therefore concentrate on that interface while transfer to others remains weak or even degrades; we call this observed specialization interface lock-in. ChronoReplay addresses it by replaying heterogeneous spatial supervision as chronologically ordered episodes, retaining source-native targets, and balancing supervision across families. Under the same observation access, a single ChronoReplay checkpoint improves OVO-S-Bench, OST-Bench, and UCS-Bench together, including a 13.41-point gain on OST-Bench, and achieves the highest three-benchmark mean among the supervision settings compared here. Same-data controls further separate the ingredients of this transfer: answer serialization redistributes gains across OST and UCS, family-balanced learning improves over ordinary joint SFT and natural turn weighting, and chronological replay exceeds a shifted-order control by about 2.41 OST points across two paired seeds. Adaptive frame selection then changes evidence access while keeping the trained model fixed, providing an additional inference-time gain at lower visual cost. Streaming spatial performance depends on what distinctions supervision preserves, how heterogeneous histories are organized during learning, and what causal evidence inference makes available at test time.<p><strong>Code:</strong> <a href="https://github.com/yihaohu0118/ChronoReplay">github.com/yihaohu0118/ChronoReplay</a><br/><strong>Project Homepage:</strong> <a href="https://yihaohu0118.github.io/ChronoReplay/">yihaohu0118.github.io/ChronoReplay/</a></p></div></details>
+</div>
+<figure class="hero-figure">
+<a data-zoom="" href="assets/teaser.png"><img alt="ChronoReplay brings categorical, metric, temporal, and reference-frame supervision together, addressing the uneven transfer of specialized training." height="597" loading="lazy" src="assets/teaser.png" width="1800"/></a>
+<figcaption>From specialized readouts to complementary spatial abilities. <span>Figure 1 from the paper · Click to enlarge</span></figcaption>
+</figure></section>
+<section class="section method-section" id="method">
+<div class="wrap">
+<div class="section-label">02 / The method</div>
+<div class="section-heading"><h2>Preserve the target.<br/>Respect its history.</h2><p>Two stages turn complementary spatial supervision into one autoregressive training objective.</p></div>
+<figure class="figure-panel"><a data-zoom="" href="assets/method.png"><img alt="Stage I constructs chronological trajectory episodes and single-turn preservation examples. Stage II combines normalized family risks in one family-balanced learning objective." height="1147" loading="lazy" src="assets/method.png" width="2100"/></a><figcaption>Causal replay construction and family-balanced learning. Observations beyond the query's causal frontier remain out of scope.</figcaption></figure>
+<div class="method-steps">
+<article><span class="step-number">I</span><h3>Causal replay construction</h3><p>Retain categorical options, metric values, and temporal targets in their source-native formats. Replay trajectory turns in chronological order, with each target tied to its observation boundary.</p><div class="small-tags"><span>Native targets</span><span>Chronological episodes</span></div></article>
+<article><span class="step-number">II</span><h3>Family-balanced learning</h3><p>Normalize the preservation and trajectory losses, then balance their contribution to shared parameters. The language model and visual merger are trained; the visual encoder stays frozen.</p><div class="small-tags"><span>Preservation + trajectory</span><span>One shared model</span></div></article>
+</div>
+</div>
+</section>
+<section class="section wrap" id="results">
+<div class="section-label">03 / Evidence</div>
+<div class="section-heading"><h2>One checkpoint.<br/>Transfer across interfaces.</h2><p>Matched comparisons isolate the effects of training. Adaptive observation access is measured separately.</p></div>
+<div aria-label="Choose a result comparison" class="result-tabs" role="group">
+<button aria-pressed="true" class="active" data-result="matched" type="button">Cross-interface transfer</button>
+<button aria-pressed="false" data-result="controls" type="button">Supervision controls</button>
+<button aria-pressed="false" data-result="access" type="button">Observation access</button>
+</div>
+<div aria-atomic="true" aria-live="polite" class="results-panel">
+<h3 id="results-title">Same model size. Same observation access.</h3>
+<p id="results-note">Official Qwen3-VL-8B versus ChronoReplay. OVO-S uses Uniform-128; OST and UCS follow their fixed causal evaluation protocols. Higher is better.</p>
+<div aria-hidden="true" class="chart" id="result-chart"></div>
+<div aria-label="Benchmark result table" class="table-scroll" tabindex="0">
+<table id="results-table">
+<caption>Matched causal-access evaluation, scores in percent.</caption>
+<thead><tr><th scope="col">Model</th><th scope="col">OVO-S ↑</th><th scope="col">OST ↑</th><th scope="col">UCS ↑</th></tr></thead>
+<tbody><tr><th scope="row">Official Qwen3-VL-8B</th><td>48.98</td><td>50.52</td><td>45.33</td></tr><tr class="highlight"><th scope="row">ChronoReplay</th><td>53.89</td><td>63.93</td><td>52.77</td></tr></tbody>
+</table>
+</div>
+<p class="source-note">Author-reported results from the paper; this release does not bundle saved predictions. <a href="assets/ChronoReplay.pdf">See protocols and full tables ↗</a></p>
+</div>
+<div class="findings">
+<article><p class="finding-number">+2.41 <small>OST points</small></p><h3>Chronological order matters.</h3><p>Chronological replay exceeds shifted-order replay across two paired seeds (64.22 versus 61.81 mean OST score), with the same turn content.</p></article>
+<article><p class="finding-number">37.11% <small>fewer frames</small></p><h3>Evidence access adds another gain.</h3><p>Adaptive access uses 80.50 frames on average versus Uniform-128 and improves OVO-S from 53.89 to 57.98 for the same checkpoint.</p></article>
+</div>
+</section>
+<section class="section examples-section">
+<div class="wrap example-grid">
+<div><div class="section-label">04 / A closer look</div><h2>One origin.<br/>Two native readouts.</h2><p>Spatial answers depend on the history that defines them. This OST-Bench episode pairs metric and temporal questions with the same causal observation sequence.</p><p class="muted">Qualitative example reproduced from the paper. Full examples and limitations are included in the manuscript.</p><a class="text-link" href="assets/ChronoReplay.pdf">Explore the paper <span aria-hidden="true">↗</span></a></div>
+<figure><a data-zoom="" href="assets/case.png"><img alt="Qualitative OST-Bench episode from the paper showing metric and temporal readouts grounded in a shared observation history." height="1600" loading="lazy" src="assets/case.png" width="1109"/></a><figcaption>Paper example · Click to inspect at full resolution</figcaption></figure>
+</div>
+</section>
+<section class="section wrap" id="resources">
+<div class="section-label">05 / Build on the work</div>
+<div class="section-heading"><h2>Start with the code.</h2><p>Implementation, configurations, tests, and a frozen training-selection manifest are available in the repository.</p></div>
+<div class="resource-grid">
+<a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/installation.md"><span class="resource-index">01</span><h3>Installation <span>↗</span></h3><p>Environment setup and model requirements.</p></a>
+<a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/data.md"><span class="resource-index">02</span><h3>Data preparation <span>↗</span></h3><p>Native records, selection manifests, and source access.</p></a>
+<a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/training.md"><span class="resource-index">03</span><h3>Training <span>↗</span></h3><p>The replay recipe and controlled comparisons.</p></a>
+<a href="https://github.com/yihaohu0118/ChronoReplay/blob/main/docs/evaluation.md"><span class="resource-index">04</span><h3>Evaluation <span>↗</span></h3><p>Inference and scoring for all three benchmarks.</p></a>
+</div>
+<div class="quickstart">
+<div><h3>A small example, without a model download.</h3><p>The CPU smoke test generates synthetic images and native records, checks media decoding, and builds a weighted Parquet pool.</p><p class="muted">Fine-tuned weights, benchmark media, and saved predictions are not included. See the data guide for available manifests and source-specific requirements.</p></div>
+<div class="code-panel"><div class="code-label">Terminal <button class="copy-button" data-copy="quickstart-code" type="button">Copy</button></div><pre><code id="quickstart-code">git clone https://github.com/yihaohu0118/ChronoReplay.git
 cd ChronoReplay
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m scripts.smoke_test --output outputs/cpu-demo</code></pre><p class="code-footnote">Linux / macOS · For GPU setup, follow the installation guide.</p></div>
-      </div>
-    </section>
-
-    <section id="citation" class="section citation-section">
-      <div class="wrap citation-grid"><div><div class="section-label">06 / Citation</div><h2>Cite ChronoReplay.</h2><p>If you use the implementation or build on this work, please cite our paper.</p></div><div class="code-panel"><div class="code-label">BibTeX <button type="button" class="copy-button" data-copy="bibtex">Copy BibTeX</button></div><pre><code id="bibtex">@misc{hu2026chronoreplay,
+</div>
+</section>
+<section class="section citation-section" id="citation">
+<div class="wrap citation-grid"><div><div class="section-label">06 / Citation</div><h2>Cite ChronoReplay.</h2><p>If you use the implementation or build on this work, please cite our paper.</p></div><div class="code-panel"><div class="code-label">BibTeX <button class="copy-button" data-copy="bibtex" type="button">Copy BibTeX</button></div><pre><code id="bibtex">@misc{hu2026chronoreplay,
   title={ChronoReplay: One Answer Interface Is Not Enough
          for Streaming Spatial Intelligence},
   author={Yihao Hu and Yitong Lin and Pan Wang and
@@ -142,10 +137,10 @@ python -m scripts.smoke_test --output outputs/cpu-demo</code></pre><p class="cod
   year={2026},
   url={https://yihaohu0118.github.io/ChronoReplay/}
 }</code></pre></div></div>
-    </section>
-  </main>
-  <footer class="wrap footer"><a class="wordmark" href="#top">ChronoReplay <span aria-hidden="true">↑</span></a><p>Research by the ChronoReplay authors.<br>Presentation inspired by <a href="https://mcg-nju.github.io/OneStreamer/">OneStreamer</a>.</p><div><a href="assets/ChronoReplay.pdf">Paper</a><a href="https://github.com/yihaohu0118/ChronoReplay">GitHub</a></div></footer>
-  <dialog id="image-viewer" aria-label="Expanded paper figure"><button class="close-viewer" type="button" aria-label="Close expanded figure">Close ×</button><img id="expanded-image" src="assets/teaser.png" alt=""><p id="expanded-caption"></p></dialog>
-  <p id="copy-status" class="sr-only" role="status"></p>
+</section>
+</main>
+<footer class="wrap footer"><a class="wordmark" href="#top">ChronoReplay <span aria-hidden="true">↑</span></a><p>Research by the ChronoReplay authors.<br/>Presentation inspired by <a href="https://mcg-nju.github.io/OneStreamer/">OneStreamer</a>.</p><div><a href="assets/ChronoReplay.pdf">Paper</a><a href="https://github.com/yihaohu0118/ChronoReplay">GitHub</a></div></footer>
+<dialog aria-label="Expanded paper figure" id="image-viewer"><button aria-label="Close expanded figure" class="close-viewer" type="button">Close ×</button><img alt="" id="expanded-image" src="assets/teaser.png"/><p id="expanded-caption"></p></dialog>
+<p class="sr-only" id="copy-status" role="status"></p>
 </body>
 </html>
