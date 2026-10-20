@@ -11,7 +11,7 @@ This document records software checks, not benchmark results.
 - Result switching, figure enlargement, BibTeX copying, local links, and the
   JavaScript-disabled results table passed browser checks.
 - The displayed main scores were checked against the manuscript's numeric macros.
-- The linked manuscript was recompiled as a 38-page PDF. The first page and
+- The linked manuscript was recompiled as a 38-page PDF. The abstract and
   reproducibility statement contain verified Code and Project Homepage links.
 - Publication files were scanned for credential patterns before uploading.
 
